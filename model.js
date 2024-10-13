@@ -122,7 +122,7 @@ const DUMP = [
     {
         id: ID++,
         title: 'Harry Potter and the Order of the Phoenix',
-        price: '23.93$', 
+        price: '23.93$',
         img: 'https://upload.wikimedia.org/wikipedia/en/7/70/Harry_Potter_and_the_Order_of_the_Phoenix.jpg',
         rate: 10
     },
@@ -137,7 +137,7 @@ const DUMP = [
         id: ID++,
         title: 'Harry Potter and the Deathly Hallows',
         price: '27.46$',
-        img:'https://upload.wikimedia.org/wikipedia/en/a/a9/Harry_Potter_and_the_Deathly_Hallows.jpg',
+        img: 'https://upload.wikimedia.org/wikipedia/en/a/a9/Harry_Potter_and_the_Deathly_Hallows.jpg',
         rate: 10
     },
     {
@@ -155,3 +155,16 @@ const DUMP = [
         rate: 10
     },
 ];
+
+function displayBooks() {
+    let books = [];
+
+    if (localStorage.getItem('dump')) {
+        books = JSON.parse(localStorage.getItem('dump'));
+        // Update ID to the next available
+        ID = books.length ? Math.max(...books.map(book => book.id)) + 1 : 1;
+    } else {
+        books = DUMP;
+        localStorage.setItem('dump', JSON.stringify(books));
+    }
+}
