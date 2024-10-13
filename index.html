@@ -8,7 +8,7 @@
 <body>
     <div class="column-div">
         <div class="head-line">
-
+            <button class="AddBook" onclick="addBook()">+ New book</button>
         </div>
         <div class="row-div">
             <table class="table">
@@ -27,7 +27,7 @@
                 <div class="inner-column-div">
                     <h2 id="book-title"></h2>
                     <div class="inner-row-div">
-                        <img id="book-img" class="book-img"/>
+                        <img id="book-img" class="book-img" />
                         <div class="inner-column-div">
                             <p id="book-price"></p>
                             <div class="rate" id="rate"></div>
@@ -37,12 +37,35 @@
             </div>
         </div>
     </div>
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Update book</h2>
+            <form id="updateForm">
+                <label for="id">Id:</label>
+                <input type="text" id="id" name="id">
 
-    
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title">
+
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price">
+
+                <label for="imageUrl">Image url:</label>
+                <input type="url" id="imageUrl" name="imageUrl" placeholder="Enter image url:">
+
+                <label for="rate">Rate:</label>
+                <input type="number" id="rateField" name="rateField" min="1" max="10">
+
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+
     <script src="model.js"></script>
     <script src="view.js"></script>
     <script src="controller.js"></script>
-    
+
 </body>
 
 </html>

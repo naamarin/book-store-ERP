@@ -179,8 +179,8 @@ function getBook(book) {
             <td>
                 <div class="actions">
                     <button class="inner-button" onclick="displayDetails(${book.id})">Read</button>
-                    <button class="inner-button" onclick="updateDetails()">Update</button>
-                    <button class="inner-button" onclick="deleteDetails()">Delete</button>
+                    <button class="inner-button" onclick="updateDetails(${book.id})">Update</button>
+                    <button class="inner-button" onclick="deleteDetails(${book.id})">Delete</button>
                 </div>
             </td>
         </tr>
@@ -191,4 +191,41 @@ function getBooks(books) {
     return books.map(book => getBook(book)).join("");
 }
 
+document.getElementById('updateForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const modal = document.getElementById("updateModal");
+    
+    if (param === undefined || param === null || param === '') {
+        books.push( {
+            id: ID++,
+            title:
+        })
+    }
 
+    const newTitle = document.getElementById('title').value;
+    const newPrice = document.getElementById('price').value;
+    const newImageUrl = document.getElementById('imageUrl').value;
+    const newRrate = document.getElementById('rateField').value;
+    const bookId = document.getElementById('id').value;
+
+    let bookIndex = books.findIndex(book => book.id == bookId);
+
+    books[bookIndex].title = newTitle || books[bookIndex].title;
+    books[bookIndex].price = newPrice || books[bookIndex].price;
+    books[bookIndex].img = newImageUrl || books[bookIndex].img;
+    books[bookIndex].rate = newRrate || books[bookIndex].rate;
+
+    console.log(books[bookIndex].img);
+    localStorage.setItem('dump', JSON.stringify(books));
+
+    modal.style.display = "none";
+    renderBooks(getBooks(books));
+    this.reset();
+});
+
+function deleteDetails(bookId) {
+    books = books.filter(book => book.id !== bookId);
+    localStorage.setItem('dump', JSON.stringify(books));
+
+    renderBooks(getBooks(books));
+}

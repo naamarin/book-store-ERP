@@ -78,3 +78,51 @@ th {
     display: flex;
     flex-direction: row;
 }
+
+/* עיצוב ה-modal */
+.modal {
+    display: none;
+    /* מוסתר כברירת מחדל */
+    position: fixed;
+    z-index: 1;
+    /* מציג מעל הכל */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* רקע שקוף */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    cursor: pointer;
+}
+
+.head-line {
+    height: 50px;
+    background-color: rgb(49, 47, 47);
+}
+
+.AddBook {
+    border: none;
+    background-color: rgb(49, 47, 47);
+    color: white;
+    margin-top: 15px;
+}
