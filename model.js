@@ -115,7 +115,7 @@ const DUMP = [
     {
         id: ID++,
         title: 'Harry Potter and the Goblet of Fire',
-        price: '',
+        price: '11.32$',
         img: 'https://upload.wikimedia.org/wikipedia/en/b/b6/Harry_Potter_and_the_Goblet_of_Fire_cover.png',
         rate: 10
     },
@@ -156,8 +156,9 @@ const DUMP = [
     },
 ];
 
-function displayBooks() {
-    let books = [];
+let books = [];
+
+function manageMemorey() {
 
     if (localStorage.getItem('dump')) {
         books = JSON.parse(localStorage.getItem('dump'));
@@ -168,3 +169,26 @@ function displayBooks() {
         localStorage.setItem('dump', JSON.stringify(books));
     }
 }
+
+function getBook(book) {
+    return `
+        <tr class="book">
+            <td>${book.id}</td>
+            <td><button class="inner-button" onclick="displayDetails(${book.id})">${book.title}</button></td>
+            <td>${book.price}</td>
+            <td>
+                <div class="actions">
+                    <button class="inner-button" onclick="displayDetails(${book.id})">Read</button>
+                    <button class="inner-button" onclick="updateDetails()">Update</button>
+                    <button class="inner-button" onclick="deleteDetails()">Delete</button>
+                </div>
+            </td>
+        </tr>
+    `
+}
+
+function getBooks(books) {
+    return books.map(book => getBook(book)).join("");
+}
+
+
