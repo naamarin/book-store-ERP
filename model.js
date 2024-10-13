@@ -194,13 +194,7 @@ function getBooks(books) {
 document.getElementById('updateForm').addEventListener('submit', function (event) {
     event.preventDefault();
     const modal = document.getElementById("updateModal");
-    
-    if (param === undefined || param === null || param === '') {
-        books.push( {
-            id: ID++,
-            title:
-        })
-    }
+
 
     const newTitle = document.getElementById('title').value;
     const newPrice = document.getElementById('price').value;
@@ -208,14 +202,23 @@ document.getElementById('updateForm').addEventListener('submit', function (event
     const newRrate = document.getElementById('rateField').value;
     const bookId = document.getElementById('id').value;
 
-    let bookIndex = books.findIndex(book => book.id == bookId);
+    if (books.some(book => book.id == bookId)) {
+        let bookIndex = books.findIndex(book => book.id == bookId);
 
-    books[bookIndex].title = newTitle || books[bookIndex].title;
-    books[bookIndex].price = newPrice || books[bookIndex].price;
-    books[bookIndex].img = newImageUrl || books[bookIndex].img;
-    books[bookIndex].rate = newRrate || books[bookIndex].rate;
-
-    console.log(books[bookIndex].img);
+        books[bookIndex].title = newTitle || books[bookIndex].title;
+        books[bookIndex].price = newPrice || books[bookIndex].price;
+        books[bookIndex].img = newImageUrl || books[bookIndex].img;
+        books[bookIndex].rate = newRrate || books[bookIndex].rate;
+    } else {
+        books.push({
+            id: ID++,
+            title: newTitle,
+            price: newPrice,
+            img: newImageUrl,
+            rate: newRrate
+        });
+    }
+    
     localStorage.setItem('dump', JSON.stringify(books));
 
     modal.style.display = "none";

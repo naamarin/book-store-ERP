@@ -4,14 +4,14 @@ function renderBooks(books) {
 
 function displayDetails(bookid) {
     const book = books.find(book => book.id === bookid)
-    console.log(book);
+
     document.getElementById('book-title').innerText = book.title;
     document.getElementById('book-img').src = book.img;
     document.getElementById('book-price').innerText = 'Price: ' + book.price;
     document.getElementById('rate').innerHTML = `<p>Rate: </p>
-                                <button class="rate-button">-</button>
+                                <button class="rate-button" onclick="minus(${book.id})">-</button>
                                 <div id="number"></div>
-                                <button class="rate-button">+</button>`;
+                                <button class="rate-button" onclick="plus(${book.id})">+</button>`;
     document.getElementById('number').innerText = book.rate;
     console.log(book);
 }
@@ -50,4 +50,17 @@ function addBook() {
     document.getElementById('imageUrl').setAttribute('required', 'required');
     document.getElementById('rateField').setAttribute('required', 'required');
     document.getElementById('id').setAttribute('required', 'required');
+    idInput = document.getElementById('id').value = ID;
+}
+
+function plus(bookid) {
+    const book = books.find(book => book.id === bookid)
+    book.rate = ++book.rate;
+    document.getElementById('number').innerText = book.rate;
+}
+
+function minus(bookid) {
+    const book = books.find(book => book.id === bookid)
+    book.rate = --book.rate;
+    document.getElementById('number').innerText = book.rate;
 }
