@@ -40,7 +40,7 @@
     <div id="updateModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Update book</h2>
+            <h2 id="form-title">Update book</h2>
             <form id="updateForm">
                 <label for="id">Id:</label>
                 <input type="text" id="id" name="id">
@@ -57,9 +57,14 @@
                 <label for="rate">Rate:</label>
                 <input type="number" id="rateField" name="rateField" min="1" max="10">
 
-                <button type="submit">Update</button>
+                <button type="submit" id="form-button">Update</button>
             </form>
         </div>
+        
+    </div>
+    <div class="lower_buttons">
+        <button class="back" onclick="back()">Back</button>
+        <button class="next" onclick="next()">Next</button>
     </div>
 
     <script src="model.js"></script>

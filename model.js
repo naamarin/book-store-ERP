@@ -156,6 +156,7 @@ const DUMP = [
     },
 ];
 
+let PAGE_NUM = 0;
 let books = [];
 
 function manageMemorey() {
@@ -187,8 +188,13 @@ function getBook(book) {
     `
 }
 
-function getBooks(books) {
-    return books.map(book => getBook(book)).join("");
+function getBooksToShow(books) {
+    
+    let book_str = '';
+    for (let i = PAGE_NUM*5; i < PAGE_NUM*5 + 5 && i< books.length; i++) {
+        book_str += getBook(books[i]);
+    }
+    return book_str;
 }
 
 document.getElementById('updateForm').addEventListener('submit', function (event) {
@@ -222,7 +228,7 @@ document.getElementById('updateForm').addEventListener('submit', function (event
     localStorage.setItem('dump', JSON.stringify(books));
 
     modal.style.display = "none";
-    renderBooks(getBooks(books));
+    renderBooks(getBooksToShow(books));
     this.reset();
 });
 
@@ -230,5 +236,5 @@ function deleteDetails(bookId) {
     books = books.filter(book => book.id !== bookId);
     localStorage.setItem('dump', JSON.stringify(books));
 
-    renderBooks(getBooks(books));
+    renderBooks(getBooksToShow(books));
 }

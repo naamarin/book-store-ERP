@@ -1,6 +1,7 @@
 table {
     width: 70%;
     border-collapse: collapse;
+    margin: 10px;
 }
 
 th,
@@ -101,6 +102,7 @@ th {
     width: 50%;
     border-radius: 10px;
 }
+
 
 .close {
     color: #aaa;
