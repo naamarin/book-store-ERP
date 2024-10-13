@@ -1,5 +1,12 @@
-function renderBooks(books) {
-    document.getElementById('table-body').innerHTML = books;
+function renderBooks(booksHtml) {
+    document.getElementById('table-body').innerHTML = booksHtml;
+    let count = 1;
+    let buttons_str = ``;
+    for (let i = 0; i < books.length; i=i+5) {
+        buttons_str += `<button class="number-button" onclick="numEvent(${count})">${count++}</button>`;
+    }
+    document.getElementById('numbers-buttons').innerHTML = buttons_str;
+
 }
 
 function displayDetails(bookid) {
@@ -66,18 +73,4 @@ function minus(bookid) {
     const book = books.find(book => book.id === bookid)
     book.rate = --book.rate;
     document.getElementById('number').innerText = book.rate;
-}
-
-function next() {
-    if ((PAGE_NUM + 1) * 5 < books.length) {
-        PAGE_NUM++;
-        renderBooks(getBooksToShow(books));
-    }
-}
-
-function back() {
-    if (PAGE_NUM > 0) {
-        PAGE_NUM--;
-        renderBooks(getBooksToShow(books));
-    }
 }

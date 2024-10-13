@@ -11,18 +11,25 @@
             <button class="AddBook" onclick="addBook()">+ New book</button>
         </div>
         <div class="row-div">
-            <table class="table">
-                <thead>
-                    <tr class="book">
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body">
-                </tbody>
-            </table>
+            <div class="div-table-buttons">
+                <table class="table">
+                    <thead>
+                        <tr class="book">
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+                <div class="lower_buttons">
+                    <button class="paginate-button" onclick="back()">Back</button>
+                    <div id="numbers-buttons" class="numbers-buttons" ></div>
+                    <button class="paginate-button" onclick="next()">Next</button>
+                </div>
+            </div>
             <div class="display-book">
                 <div class="inner-column-div">
                     <h2 id="book-title"></h2>
@@ -60,12 +67,9 @@
                 <button type="submit" id="form-button">Update</button>
             </form>
         </div>
-        
+
     </div>
-    <div class="lower_buttons">
-        <button class="back" onclick="back()">Back</button>
-        <button class="next" onclick="next()">Next</button>
-    </div>
+
 
     <script src="model.js"></script>
     <script src="view.js"></script>

@@ -1,5 +1,5 @@
 table {
-    width: 70%;
+    width: 100%;
     border-collapse: collapse;
     margin: 10px;
 }
@@ -127,4 +127,29 @@ th {
     background-color: rgb(49, 47, 47);
     color: white;
     margin-top: 15px;
+}
+
+.div-table-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.paginate-button {
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    width: 100px;
+    height: 30px;
+}
+
+.lower_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+
+.numbers-buttons {
+    margin-top: 5px;
 }
